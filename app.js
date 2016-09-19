@@ -7,14 +7,19 @@ angular.module('LunchChecker', [])
   $scope.message = "";
   $scope.dishes = "";
   $scope.checkIfTooMuch = function () {
-    var items = itemsInText($scope.dishes);
-    if(items == 0 || $scope.dishes == "") {
-        $scope.message = "Empty";
-    } else if(items <= 3) {
-        $scope.message = "Enjoy!";
-    } else {
-        $scope.message = "Too much!";
-    }
+      if($scope.dishes == "") {
+          $scope.message = "Please enter data first";
+      } else {
+          var items = itemsInText($scope.dishes);
+          if(items == 0 || $scope.dishes == "") {
+              $scope.message = "Empty";
+          } else if(items <= 3) {
+              $scope.message = "Enjoy!";
+          } else {
+              $scope.message = "Too much!";
+          }
+      }
+
   };
 
 
