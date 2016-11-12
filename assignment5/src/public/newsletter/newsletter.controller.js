@@ -6,6 +6,7 @@ angular.module('public')
 
 function NewsLetterController() {
   var $ctrl = this;
+  $ctrl.test = "asdsfsdfdsfsdf";
   $ctrl.submit = function () {
     $ctrl.completed = true;
   };
