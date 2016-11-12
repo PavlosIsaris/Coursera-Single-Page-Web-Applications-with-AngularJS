@@ -34,12 +34,7 @@ function routeConfig ($stateProvider) {
       url: '/newsletter',
       templateUrl: 'src/public/newsletter/newsletterForm.html',
       controller: 'NewsLetterController',
-      controllerAs: 'newsletterCtrl',
-      resolve: {
-        menuCategories: ['MenuService', function (MenuService) {
-          return MenuService.getCategories();
-        }]
-      }
+      controllerAs: 'newsletterCtrl'
     })
     .state('public.menuitems', {
       url: '/menu/{category}',
