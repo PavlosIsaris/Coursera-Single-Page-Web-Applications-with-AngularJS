@@ -1,0 +1,53 @@
+
+    <h1>Simple Form Validation</h1>
+
+    <fieldset>
+      <legend>Registration</legend>
+      <form name='newsletterForm' novalidate>
+
+        <input type="text" name="username" placeholder="Pick a username"
+          ng-model="newsletterCtrl.user.username"
+          required
+          minlength="4"
+          ng-maxlength="10">
+          {{ newsletterCtrl.user.username }}
+          <span
+            ng-if="(newsletterForm.username.$error.minlength || newsletterForm.username.$error.required) && newsletterForm.username.$touched">
+            Username must be at least 4 characters long
+          </span>
+          <span ng-if="newsletterForm.username.$error.maxlength && newsletterForm.username.$touched">
+            Username must not be longer than 10 characters
+          </span>
+          <br>
+
+        <input type="email" name="email" placeholder="Email"
+          ng-model="newsletterCtrl.user.email"
+          required>
+          <span ng-if="newsletterForm.email.$invalid && newsletterForm.email.$touched">
+            Must be a valid email address: handle@domain format
+          </span>
+          <br>
+
+        <input type="text" name="phone" placeholder="Phone ###-###-####"
+          ng-model="newsletterCtrl.user.phone"
+          pattern="(\d{3})-(\d{3})-(\d{4})">
+          <span ng-if="newsletterForm.phone.$invalid && newsletterForm.phone.$touched">
+            Phone must be in the format ###-###-####.
+          </span>
+          <br>
+
+        <button
+          ng-disabled="newsletterForm.$invalid"
+          ng-click="newsletterCtrl.submit()">Submit</button>
+
+          <div style="margin-top: 10px;">
+            Form valid? {{ newsletterForm.$valid }}
+          </div>
+      </form>
+    </fieldset>
+
+    <div id="info" ng-if="newsletterCtrl.completed">
+      Username: {{ newsletterCtrl.user.username}} <br>
+      Email: {{ newsletterCtrl.user.email}} <br>
+      Phone: {{ newsletterCtrl.user.phone }}
+    </div>
