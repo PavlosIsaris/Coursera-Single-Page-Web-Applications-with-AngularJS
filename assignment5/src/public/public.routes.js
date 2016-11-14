@@ -29,6 +29,16 @@ function routeConfig ($stateProvider) {
           return MenuService.getCategories();
         }]
       }
+  }).state('public.myinfo', {
+      url: '/myinfo',
+      templateUrl: 'src/public/myinfo/myinfo.html',
+      controller: 'MyInfoController',
+      controllerAs: 'myInfoCtrl',
+      resolve: {
+        favMenuItem: ['MenuService', function (MenuService) {
+          return MenuService.getSavedMenuItem();
+        }]
+      }
     })
     .state('public.newsletter', {
       url: '/newsletter',
